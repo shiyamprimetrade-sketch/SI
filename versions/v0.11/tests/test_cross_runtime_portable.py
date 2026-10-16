@@ -91,7 +91,7 @@ class CrossRuntimePortableTests(unittest.TestCase):
         src = []
         for _ in range(300):
             a, b = rng.randint(-10**30, 10**30), rng.randint(-10**30, 10**30) or 1
-            src.append(f"\tPuSh +{a}\nPUSH {b}#note\n{rng.choice(ops)}\nPRINT")
+            src.append(f"\tPuSh {a:+d}\nPUSH {b}#note\n{rng.choice(ops)}\nPRINT")
         self.compare(src)
 
     def test_seeded_random_ascii_300(self):
