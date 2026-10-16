@@ -1,0 +1,17 @@
+test_arithmetic (test_si.SITests.test_arithmetic) ... ok
+test_bad_label (test_si.SITests.test_bad_label) ... ok
+test_budget (test_si.SITests.test_budget) ... ok
+test_comments (test_si.SITests.test_comments) ... ok
+test_division (test_si.SITests.test_division) ... ok
+test_loop (test_si.SITests.test_loop) ... ok
+test_no_code_execution (test_si.SITests.test_no_code_execution) ... ok
+test_order (test_si.SITests.test_order) ... ok
+test_stack_limit (test_si.SITests.test_stack_limit) ... ok
+test_underflow (test_si.SITests.test_underflow) ... ok
+test_unknown (test_si.SITests.test_unknown) ... ok
+test_zero (test_si.SITests.test_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+OK
