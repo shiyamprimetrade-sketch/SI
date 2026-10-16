@@ -1,0 +1,39 @@
+name: SI v0.14 IEEE bit-vector numeric conformance
+on:
+  push:
+    paths:
+      - 'versions/v0.14/**'
+      - '.github/workflows/ci-v014.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.14/**'
+      - '.github/workflows/ci-v014.yml'
+permissions:
+  contents: read
+jobs:
+  numeric-vectors:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Validate sources
+        working-directory: versions/v0.14
+        run: python --version && node --version && python -m compileall -q si tests && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js
+      - name: Run entire SI regression and numerical vector suite
+        working-directory: versions/v0.14
+        run: python -W error -m unittest discover -s tests -v
+      - name: Run bounded lexical proof obligations
+        working-directory: versions/v0.14
+        run: python -W error -m si.obligations
+      - name: SI CLI smoke test
+        working-directory: versions/v0.14
+        run: python -m si examples.si
