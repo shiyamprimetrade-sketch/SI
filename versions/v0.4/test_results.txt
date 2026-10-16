@@ -1,0 +1,54 @@
+test_arithmetic (test_compiler.CompilerTests.test_arithmetic) ... ok
+test_bad_arity (test_compiler.CompilerTests.test_bad_arity) ... ok
+test_compiler_determinism (test_compiler.CompilerTests.test_compiler_determinism) ... ok
+test_duplicate_label (test_compiler.CompilerTests.test_duplicate_label) ... ok
+test_example (test_compiler.CompilerTests.test_example) ... ok
+test_forward_jump (test_compiler.CompilerTests.test_forward_jump) ... ok
+test_random_programs (test_compiler.CompilerTests.test_random_programs) ... ok
+test_stack_budget (test_compiler.CompilerTests.test_stack_budget) ... ok
+test_step_budget (test_compiler.CompilerTests.test_step_budget) ... ok
+test_underflow (test_compiler.CompilerTests.test_underflow) ... ok
+test_unknown_jump (test_compiler.CompilerTests.test_unknown_jump) ... ok
+test_zero_division (test_compiler.CompilerTests.test_zero_division) ... ok
+test_seeded_arithmetic_differential_5000 (test_properties.PropertyTests.test_seeded_arithmetic_differential_5000) ... ok
+test_seeded_control_flow_1000 (test_properties.PropertyTests.test_seeded_control_flow_1000) ... ok
+test_seeded_underflow_rejection_1000 (test_properties.PropertyTests.test_seeded_underflow_rejection_1000) ... ok
+test_arithmetic (test_si.SITests.test_arithmetic) ... ok
+test_bad_label (test_si.SITests.test_bad_label) ... ok
+test_budget (test_si.SITests.test_budget) ... ok
+test_comments (test_si.SITests.test_comments) ... ok
+test_division (test_si.SITests.test_division) ... ok
+test_loop (test_si.SITests.test_loop) ... ok
+test_no_code_execution (test_si.SITests.test_no_code_execution) ... ok
+test_order (test_si.SITests.test_order) ... ok
+test_stack_limit (test_si.SITests.test_stack_limit) ... ok
+test_underflow (test_si.SITests.test_underflow) ... ok
+test_unknown (test_si.SITests.test_unknown) ... ok
+test_zero (test_si.SITests.test_zero) ... ok
+test_bad_jump (test_types.TypesTests.test_bad_jump) ... ok
+test_bad_push_bool (test_types.TypesTests.test_bad_push_bool) ... ok
+test_comparison_int (test_types.TypesTests.test_comparison_int) ... ok
+test_division_float (test_types.TypesTests.test_division_float) ... ok
+test_empty (test_types.TypesTests.test_empty) ... ok
+test_integer_add (test_types.TypesTests.test_integer_add) ... ok
+test_join_number (test_types.TypesTests.test_join_number) ... ok
+test_loop_fixed_point (test_types.TypesTests.test_loop_fixed_point) ... ok
+test_overflow (test_types.TypesTests.test_overflow) ... ok
+test_stack_join_error (test_types.TypesTests.test_stack_join_error) ... ok
+test_underflow (test_types.TypesTests.test_underflow) ... ok
+test_unknown_op (test_types.TypesTests.test_unknown_op) ... ok
+test_bad_jump (test_verify.VerifyTests.test_bad_jump) ... ok
+test_basic (test_verify.VerifyTests.test_basic) ... ok
+test_dead_code_removed (test_verify.VerifyTests.test_dead_code_removed) ... ok
+test_deterministic (test_verify.VerifyTests.test_deterministic) ... ok
+test_join_mismatch (test_verify.VerifyTests.test_join_mismatch) ... ok
+test_jump_to_exit (test_verify.VerifyTests.test_jump_to_exit) ... ok
+test_max_stack (test_verify.VerifyTests.test_max_stack) ... ok
+test_randomized_equivalence (test_verify.VerifyTests.test_randomized_equivalence) ... ok
+test_underflow (test_verify.VerifyTests.test_underflow) ... ok
+test_unreachable_underflow_ignored (test_verify.VerifyTests.test_unreachable_underflow_ignored) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.832s
+
+OK
