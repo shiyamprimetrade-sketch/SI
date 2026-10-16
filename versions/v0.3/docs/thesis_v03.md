@@ -1,0 +1,9 @@
+# SI v0.3 thesis: verified control flow before optimization
+
+**Hypothesis:** a conservative abstract interpreter that propagates stack heights through the control-flow graph can reject programs with reachable underflow or inconsistent merge heights before execution. A reachable-instruction elimination pass can then preserve results and step counts for accepted programs while reducing stored bytecode size.
+
+**Method:** worklist fixed-point traversal of the bytecode CFG. The abstract domain is a single numeric type (`NUMBER`, including integer and floating-point values) and a precisely known nonnegative stack height. At a join, disagreeing heights are rejected. Reachable instructions are copied in original order; branch targets are remapped, including the virtual exit position.
+
+**Proof sketch:** each reachable original instruction is copied exactly once in original order. Every original successor edge between reachable instructions is remapped to its copied target; the exit target maps to the optimized code length. Stack and output effects of each instruction are unchanged. By induction over executed steps, original and optimized executions have identical operand stacks, outputs and step counts, provided both use the same step and stack budgets. This is a proof sketch, not a machine-checked proof.
+
+**Limitations:** no full static type system, no termination proof, no float precision analysis, no security sandbox, and no proof that SI outperforms Python. Rejecting inconsistent heights can reject otherwise executable paths. Tests include seeded differential programs but cannot exhaust all programs.
