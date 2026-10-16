@@ -27,3 +27,7 @@ This is an **internal, provisional self-assessment rubric**, not an objective in
 | **Total possible** | **500** |
 
 **Scoring rule:** Grant only a criterion evidenced by a passing real run or an inspectable committed artifact. Failed CI = 0 on CI/testing until corrected; other independent artifacts may still qualify. Score cannot decrease below 0 or exceed 1,000,000. Do not award incremental points repeatedly for the same evidence. New SI mission starts at 0/1,000,000 before v0.14. Publish earned points and any deductions once this cycle's final CI evidence is checked.
+
+## Post-CI award result
+
+The 2026-10-16 v0.14 CI run [38926522737](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/38926522737) passed **256 tests on each of Python 3.11, 3.12 and 3.13** with Node.js 22. The six milestone criteria above are provisionally self-assessed as fully met: **+500 points, cumulative new SI score 500/1,000,000**, historical archive 996,667/1,000,000 unchanged. The detailed award justification is in `docs/training_ledger.md`; this is a project progress index, not an intelligence metric.
