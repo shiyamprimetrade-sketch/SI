@@ -1,0 +1,27 @@
+name: SI v0.7 bounded numeric tests
+on:
+  push:
+    paths:
+      - 'versions/v0.7/**'
+      - '.github/workflows/ci-v07.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.7/**'
+      - '.github/workflows/ci-v07.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run SI v0.7 tests
+        working-directory: versions/v0.7
+        run: python -W error -m unittest discover -s tests -v
