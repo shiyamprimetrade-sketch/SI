@@ -1,0 +1,9 @@
+# SI v0.4 thesis: abstract interpretation for predictable stack programs
+
+**Hypothesis.** A small forward dataflow type analysis can detect reachable stack-shape failures before executing SI programs and document the numeric types at each control-flow point. The analysis propagates INT and FLOAT and merges incompatible numeric types to NUMBER. It terminates because the abstract domain is finite for fixed stack heights. This is a standard abstract-interpretation technique, **not an original invention or a machine-checked proof**.
+
+**Scope.** PUSH creates INT; DIV produces FLOAT; LT/EQ produce INT (0 or 1); arithmetic follows operand types. JZ accepts any numeric type. A branch join requires identical stack heights and merges elementwise types. Type checking does not prove termination, nonzero divisors, exact arithmetic, runtime security, or speed superiority. Python's arbitrary precision and floating-point behavior remain inherited. Existing interpreter/VM do not consume inferred types to specialize execution.
+
+**Test method.** Unit tests for type transitions, joins, malformed bytecode, loops and limits; seeded differential testing across thousands of generated cases; microbenchmark against equivalent Python expression. These tests sample a finite subset, not all programs.
+
+**Threats to validity.** Workloads are tiny and mostly arithmetic; interpreter and VM are Python implementations; optimizer correctness tests do not establish general semantic equivalence. Measurements are machine/environment dependent and include call overhead. Future work: richer type syntax, constant propagation with proof obligations, mutation fuzzing, independent evaluator, and reproducible external review.
