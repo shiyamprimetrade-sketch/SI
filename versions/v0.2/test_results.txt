@@ -1,0 +1,29 @@
+test_arithmetic (test_compiler.CompilerTests.test_arithmetic) ... ok
+test_bad_arity (test_compiler.CompilerTests.test_bad_arity) ... ok
+test_compiler_determinism (test_compiler.CompilerTests.test_compiler_determinism) ... ok
+test_duplicate_label (test_compiler.CompilerTests.test_duplicate_label) ... ok
+test_example (test_compiler.CompilerTests.test_example) ... ok
+test_forward_jump (test_compiler.CompilerTests.test_forward_jump) ... ok
+test_random_programs (test_compiler.CompilerTests.test_random_programs) ... ok
+test_stack_budget (test_compiler.CompilerTests.test_stack_budget) ... ok
+test_step_budget (test_compiler.CompilerTests.test_step_budget) ... ok
+test_underflow (test_compiler.CompilerTests.test_underflow) ... ok
+test_unknown_jump (test_compiler.CompilerTests.test_unknown_jump) ... ok
+test_zero_division (test_compiler.CompilerTests.test_zero_division) ... ok
+test_arithmetic (test_si.SITests.test_arithmetic) ... ok
+test_bad_label (test_si.SITests.test_bad_label) ... ok
+test_budget (test_si.SITests.test_budget) ... ok
+test_comments (test_si.SITests.test_comments) ... ok
+test_division (test_si.SITests.test_division) ... ok
+test_loop (test_si.SITests.test_loop) ... ok
+test_no_code_execution (test_si.SITests.test_no_code_execution) ... ok
+test_order (test_si.SITests.test_order) ... ok
+test_stack_limit (test_si.SITests.test_stack_limit) ... ok
+test_underflow (test_si.SITests.test_underflow) ... ok
+test_unknown (test_si.SITests.test_unknown) ... ok
+test_zero (test_si.SITests.test_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.223s
+
+OK
