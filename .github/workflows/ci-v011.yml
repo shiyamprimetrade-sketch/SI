@@ -1,0 +1,41 @@
+name: SI v0.11 Python Node portable conformance
+on:
+  push:
+    paths:
+      - 'versions/v0.11/**'
+      - '.github/workflows/ci-v011.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.11/**'
+      - '.github/workflows/ci-v011.yml'
+permissions:
+  contents: read
+jobs:
+  cross-runtime:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Versions
+        run: python --version && node --version
+      - name: Verify syntax
+        working-directory: versions/v0.11
+        run: python -m compileall -q si tests && node --check js/portable.js
+      - name: Run full tests including Python and Node differential conformance
+        working-directory: versions/v0.11
+        run: python -W error -m unittest discover -s tests -v
+      - name: Run executable bounded obligations
+        working-directory: versions/v0.11
+        run: python -W error -m si.obligations
+      - name: CLI language smoke test
+        working-directory: versions/v0.11
+        run: python -m si examples.si
