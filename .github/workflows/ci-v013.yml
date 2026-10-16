@@ -1,0 +1,39 @@
+name: SI v0.13 deterministic numeric semantics
+on:
+  push:
+    paths:
+      - 'versions/v0.13/**'
+      - '.github/workflows/ci-v013.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.13/**'
+      - '.github/workflows/ci-v013.yml'
+permissions:
+  contents: read
+jobs:
+  numeric-conformance:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Compile and validate syntax
+        working-directory: versions/v0.13
+        run: python --version && node --version && python -m compileall -q si tests && node --check js/portable.js && node --check js/vm.js
+      - name: Run complete conformance and adversarial suite
+        working-directory: versions/v0.13
+        run: python -W error -m unittest discover -s tests -v
+      - name: Recheck bounded lexical obligations
+        working-directory: versions/v0.13
+        run: python -W error -m si.obligations
+      - name: SI source CLI smoke test
+        working-directory: versions/v0.13
+        run: python -m si examples.si
