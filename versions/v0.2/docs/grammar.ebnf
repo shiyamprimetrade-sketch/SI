@@ -1,0 +1,10 @@
+(* SI v0.2 line-oriented grammar. Lexical whitespace separates tokens. *)
+program = { line } ;
+line = [ instruction ], [ comment ], newline ;
+instruction = "PUSH", integer | "LABEL", identifier | "JMP", identifier | "JZ", identifier | nullary ;
+nullary = "ADD" | "SUB" | "MUL" | "DIV" | "LT" | "EQ" | "DUP" | "SWAP" | "DROP" | "PRINT" | "HALT" ;
+integer = [ "-" | "+" ], digit, { digit } ;
+identifier = nonspace, { nonspace } ;
+comment = "#", { nonnewline } ;
+newline = "\n" ;
+(* Keywords case-insensitive. Labels case-sensitive. Identifier character restrictions follow shlex tokenization. *)
