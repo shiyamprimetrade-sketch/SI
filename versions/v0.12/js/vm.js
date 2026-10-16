@@ -108,7 +108,7 @@ function category(s){
  if(s.includes('division by zero'))return 'division by zero';
  if(s.includes('numeric overflow'))return 'numeric overflow';
  if(s.includes('non-finite'))return 'non-finite numeric result';
- if(s.startsWith('invalid ')||s.includes('nonportable')||s.includes('unknown ')||s.includes('duplicate ')||s.includes('needs '))return 'parse error';
+ if(s.startsWith('invalid ')||s.includes('nonportable')||s.includes('bare CR')||s.includes('character at offset')||s.includes('unknown ')||s.includes('duplicate ')||s.includes('needs '))return 'parse error';
  return 'other error';
 }
 function evaluate(input){
