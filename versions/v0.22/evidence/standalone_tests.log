@@ -1,0 +1,15 @@
+test_bad_lexical (test_portable_standalone.PortableStandaloneTests.test_bad_lexical) ... ok
+test_canonical_stability (test_portable_standalone.PortableStandaloneTests.test_canonical_stability) ... ok
+test_case_and_whitespace (test_portable_standalone.PortableStandaloneTests.test_case_and_whitespace) ... ok
+test_empty_and_comment (test_portable_standalone.PortableStandaloneTests.test_empty_and_comment) ... ok
+test_exhaustive_short_lexical_sequences (test_portable_standalone.PortableStandaloneTests.test_exhaustive_short_lexical_sequences) ... ok
+test_invalid_source_type (test_portable_standalone.PortableStandaloneTests.test_invalid_source_type) ... ok
+test_jumps (test_portable_standalone.PortableStandaloneTests.test_jumps) ... ok
+test_labels_case_sensitive (test_portable_standalone.PortableStandaloneTests.test_labels_case_sensitive) ... ok
+test_nul_in_comment_rejected (test_portable_standalone.PortableStandaloneTests.test_nul_in_comment_rejected) ... ok
+test_seeded_roundtrip_1500 (test_portable_standalone.PortableStandaloneTests.test_seeded_roundtrip_1500) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.057s
+
+OK

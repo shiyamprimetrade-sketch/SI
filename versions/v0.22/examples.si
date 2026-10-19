@@ -1,0 +1,12 @@
+# Print countdown
+PUSH 3
+LABEL loop
+DUP
+PRINT
+PUSH 1
+SUB
+DUP
+JZ end
+JMP loop
+LABEL end
+DROP

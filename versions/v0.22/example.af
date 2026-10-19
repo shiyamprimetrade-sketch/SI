@@ -1,0 +1,5 @@
+# AxiomFlow cost example
+let invoice = 125.50 USD
+let shipping = 18.25 USD
+let subtotal = invoice + shipping
+emit subtotal * 1.075
