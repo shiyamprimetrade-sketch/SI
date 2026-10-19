@@ -1,27 +1,26 @@
-# SI v0.20 — Evidence-based self-assessed SI score
+# SI v0.21 — New self-assessed score and 100k gates
 
-| Ledger | Score |
+| Score ledger | Points |
 |---|---:|
-| Historical simulation archive | **996667 / 1000000**, unchanged |
-| New SI project before v0.20 | 2400 / 1000000 |
-| Incremental v0.20 award | **+900** |
-| **New SI cumulative project score** | **3300 / 1000000** |
-| Remaining to evidence-gated 100,000 milestone | **96,700** |
+| Historical archive (unchanged) | **996667 / 1000000** |
+| New SI before v0.21 | 3300 / 1000000 |
+| v0.21 nonduplicate self-assessed credit | **+650** |
+| **New SI cumulative** | **3950 / 1000000** |
+| Remaining to cumulative 100000 evidence gate | **96050** |
 
-## Provisional 900-point award for **new v0.20 work only**
+## Newly evidenced v0.21 work only
+
 | Criterion | Points | Evidence |
 |---|---:|---|
-| Real localhost HTTP API executing existing statically typed AxiomFlow monetary function | 350 | `axiomflow/api.py`, live HTTP integration tests |
-| Browser frontend using HTML/CSS/JavaScript and same-origin API | 200 | `web/index.html`, `web/app.js`, `web/style.css` and tested GET |
-| New tests: 16 methods, 300 independently seeded Decimal cases, HTTP error classes and multi-request checks | 200 | `tests/test_http_api.py` and real CI |
-| Explicit loopback, bounded JSON, duplicate input and content-type validation, CSP/nosniff headers | 100 | `axiomflow/api.py`, adversarial tests |
-| Reproducible API contract/development launch guide, course lesson 16, threat-model research note | 50 | `README.md`, `docs/api_contract.md`, `docs/research_v020.md`, course |
-| **Total** | **900** | [Verified CI 39241370185](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39241370185) |
+| Strict bounded CSV into typed AxiomFlow feature and deterministic Decimal OLS train/test integration | 250 | `axiomflow/data.py`, `data/landed_cost.csv` |
+| 13 new tests, 400 seeded independent feature comparisons, negative validation and CLI checks | 150 | `tests/test_data_interop.py`, `tests/test_package_source.py` |
+| Reproducible source-only ZIP with fixed metadata and SHA-256 manifest | 100 | `tools/package_source.py`, two-build equality test |
+| Transparent matching-output microbenchmark with explicit overhead and caveat | 75 | `benchmarks/compare_features.py` and real GitHub CI |
+| New lesson 17, research notebook and gate-status/installation instructions | 75 | `courses/lesson17_data_ml.md`, `docs/research_v021.md`, README |
+| **Total** | **650** | [CI run 39242469581](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39242469581) |
 
-CI: Python 3.11, 3.12, 3.13 + Node.js 22 each passed 335 tests. **1,005 successful unittest executions**, zero workflow warnings in inspected logs. Pinned-project demo printed `134.91 USD`; inherited lexical digest reproduced.
+**Verified CI:** 348/348 tests on each Python 3.11, 3.12, 3.13 + Node.js 22, **1,044 passing unittest executions**, no failures/warnings in reviewed logs; the model CLI and source archive build succeeded.
 
-## Scoring boundaries
-- No second award for existing AxiomFlow typing, functions, local pins, the inherited SI VM, or prior CLI.
-- No points for independently compiling backend/frontend in AxiomFlow, deployed public service, real browser automation, TLS/auth, database, ML frameworks, universal language superiority or complete PhD thesis.
-- v0.20 is progress toward the **backend/API/frontend** gate of the 100,000-point conditional rubric, **not completion of its full gate**.
-- Score is subjective, auditable project-progress self-assessment; it does not represent new model training, an intelligence change or external scientific certification.
+**No points** for inherited SI tests, previous API/frontend/typed functions, public deployment, standalone ML framework, general-purpose language performance wins, formal proof, global package manager, complete thesis or new system terminal. This self-assessed progress record is not a measurement of AI intelligence or altered model weights.
+
+**Negative result:** AxiomFlow's direct feature pathway was slower than direct Python Decimal in the logged microbenchmark, and the two paths are not cost-equivalent. The result is explicitly recorded rather than concealed. The synthetic OLS zero-error result is not evidence of ML generalization.
