@@ -1,0 +1,9 @@
+{
+  "format": 1,
+  "entry": "main.af",
+  "modules": {"pricing": "pricing.af"},
+  "sha256": {
+    "main.af": "de51ae4ef5b74448ae983bc3bb186445d663a2e84abe7e4e2594001553b2c7c4",
+    "pricing.af": "9567c892600fa96f0488b618d885563ff79f5eff2c2c1cd072d01147dff12dc5"
+  }
+}
