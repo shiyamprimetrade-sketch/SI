@@ -7,6 +7,9 @@ from decimal import Decimal
 import json
 import statistics
 import time
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from axiomflow.data import feature_axiomflow,feature_precompiled,feature_decimal_reference
 
 SAMPLES=(("125.50","0.0750"),("1.00","0.1250"),
