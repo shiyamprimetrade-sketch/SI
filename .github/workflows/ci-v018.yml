@@ -1,0 +1,42 @@
+name: SI v0.18 compile-once language and milestone gates
+on:
+  push:
+    paths:
+      - 'versions/v0.18/**'
+      - '.github/workflows/ci-v018.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.18/**'
+      - '.github/workflows/ci-v018.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Check syntax
+        working-directory: versions/v0.18
+        run: python --version && node --version && python -m compileall -q si tests axiomflow benchmarks && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js
+      - name: Run complete regression and AxiomFlow new tests
+        working-directory: versions/v0.18
+        run: python -W error -m unittest discover -s tests -v
+      - name: Bounded existing lexical obligations
+        working-directory: versions/v0.18
+        run: python -W error -m si.obligations
+      - name: Terminal and AxiomFlow example
+        working-directory: versions/v0.18
+        run: python -m si examples.si && python -m axiomflow example.af
+      - name: Exploratory benchmark (non-cost-equivalent)
+        working-directory: versions/v0.18
+        run: python benchmarks/compare_decimal.py --iterations 200 --repeats 3
