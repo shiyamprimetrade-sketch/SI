@@ -1,0 +1,42 @@
+name: SI v0.19 AxiomFlow typed functions and pinned build
+on:
+  push:
+    paths:
+      - 'versions/v0.19/**'
+      - '.github/workflows/ci-v019.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.19/**'
+      - '.github/workflows/ci-v019.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Runtime and syntax checks
+        working-directory: versions/v0.19
+        run: python --version && node --version && python -m compileall -q si tests axiomflow benchmarks && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js
+      - name: Full SI and AxiomFlow regression
+        working-directory: versions/v0.19
+        run: python -W error -m unittest discover -s tests -v
+      - name: Pinned local module CLI
+        working-directory: versions/v0.19
+        run: python -m axiomflow --project project/axiomflow.json
+      - name: Legacy CLI and bounded obligations
+        working-directory: versions/v0.19
+        run: python -m si examples.si && python -W error -m si.obligations
+      - name: Transparent exploratory benchmark
+        working-directory: versions/v0.19
+        run: python benchmarks/compare_decimal.py --iterations 100 --repeats 3
