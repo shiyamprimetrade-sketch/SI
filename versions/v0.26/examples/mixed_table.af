@@ -1,0 +1,10 @@
+# v0.26 bounded mixed scalar/table source
+let min_price = 100.00 USD
+let multiplier = 1.10
+table t = input
+filter t where price_usd >= min_price
+derive t adjusted_usd = price_usd * multiplier
+sort t by price_usd
+sum t.adjusted_usd
+select t (price_usd,adjusted_usd)
+emit t
