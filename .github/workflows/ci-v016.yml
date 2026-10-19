@@ -1,0 +1,39 @@
+name: SI v0.16 decimal roundtrip and language proposal
+on:
+  push:
+    paths:
+      - 'versions/v0.16/**'
+      - '.github/workflows/ci-v016.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.16/**'
+      - '.github/workflows/ci-v016.yml'
+permissions:
+  contents: read
+jobs:
+  decimal-conformance:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Syntax and runtime
+        working-directory: versions/v0.16
+        run: python --version && node --version && python -m compileall -q si tests && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js
+      - name: Entire conformance suite
+        working-directory: versions/v0.16
+        run: python -W error -m unittest discover -s tests -v
+      - name: Bounded lexical properties
+        working-directory: versions/v0.16
+        run: python -W error -m si.obligations
+      - name: CLI smoke
+        working-directory: versions/v0.16
+        run: python -m si examples.si
