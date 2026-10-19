@@ -1,0 +1,45 @@
+name: SI v0.23 executable typed table source language
+on:
+  push:
+    paths:
+      - 'versions/v0.23/**'
+      - '.github/workflows/ci-v023.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.23/**'
+      - '.github/workflows/ci-v023.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Validate Python and JavaScript syntax
+        working-directory: versions/v0.23
+        run: python --version && node --version && python -m compileall -q si tests axiomflow tools benchmarks && node --check js/fixed_cents.js && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js && node --check web/app.js
+      - name: Full SI/AxiomFlow numeric, table-language and data regression
+        working-directory: versions/v0.23
+        run: python -W error -m unittest discover -s tests -v
+      - name: Execute real AxiomFlow table program
+        working-directory: versions/v0.23
+        run: python -m axiomflow.table_language examples/table_summary.af --csv data/landed_cost.csv
+      - name: Typed data/ML and source ZIP build
+        working-directory: versions/v0.23
+        run: python -m axiomflow.data data/landed_cost.csv && python -m tools.package_source --output /tmp/axiomflow-v023.zip
+      - name: Legacy SI obligations and AxiomFlow pinned project
+        working-directory: versions/v0.23
+        run: python -m axiomflow --project project/axiomflow.json && python -m si examples.si && python -W error -m si.obligations
+      - name: Existing interpreters and direct Decimal benchmark evidence
+        working-directory: versions/v0.23
+        run: python benchmarks/compare_precompiled.py --iterations 200 --repeats 3

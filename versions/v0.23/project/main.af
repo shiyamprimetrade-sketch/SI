@@ -1,0 +1,2 @@
+use pricing
+emit pricing.tax(125.50 USD, 0.075)
