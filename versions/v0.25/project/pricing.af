@@ -1,0 +1,1 @@
+fn tax(price: USD, rate: scalar) -> USD = price * (1 + rate)
