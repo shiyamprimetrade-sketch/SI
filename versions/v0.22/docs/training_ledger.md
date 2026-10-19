@@ -1,26 +1,24 @@
-# SI v0.21 — New self-assessed score and 100k gates
+# SI v0.22 — Audited self-assessed engineering points
 
-| Score ledger | Points |
+| Ledger | Points |
 |---|---:|
-| Historical archive (unchanged) | **996667 / 1000000** |
-| New SI before v0.21 | 3300 / 1000000 |
-| v0.21 nonduplicate self-assessed credit | **+650** |
-| **New SI cumulative** | **3950 / 1000000** |
-| Remaining to cumulative 100000 evidence gate | **96050** |
+| Historical simulation archive, unchanged | **996667/1000000** |
+| New SI project before v0.22 | **3950/1000000** |
+| **Incremental v0.22 award** | **+800** |
+| **New SI project cumulative** | **4750/1000000** |
+| Remaining to evidence-gated 100000 project milestone | **95250** |
 
-## Newly evidenced v0.21 work only
-
-| Criterion | Points | Evidence |
+## New v0.22 work awarded once
+| Distinct evidence | New points | Verification |
 |---|---:|---|
-| Strict bounded CSV into typed AxiomFlow feature and deterministic Decimal OLS train/test integration | 250 | `axiomflow/data.py`, `data/landed_cost.csv` |
-| 13 new tests, 400 seeded independent feature comparisons, negative validation and CLI checks | 150 | `tests/test_data_interop.py`, `tests/test_package_source.py` |
-| Reproducible source-only ZIP with fixed metadata and SHA-256 manifest | 100 | `tools/package_source.py`, two-build equality test |
-| Transparent matching-output microbenchmark with explicit overhead and caveat | 75 | `benchmarks/compare_features.py` and real GitHub CI |
-| New lesson 17, research notebook and gate-status/installation instructions | 75 | `courses/lesson17_data_ml.md`, `docs/research_v021.md`, README |
-| **Total** | **650** | [CI run 39242469581](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39242469581) |
+| Bounded immutable typed tables/records host operations, validated schemas and deterministic transforms | 250 | `axiomflow/table.py`, passing table tests |
+| Cached parsed and statically checked typed AxiomFlow money feature, parity against v0.21 | 200 | `axiomflow/data.py`, no-reparse test and measured medians |
+| New adversarial and seeded tests (17 new unittest methods/version; 400 triple-path cases) | 150 | `tests/test_typed_tables.py`, CI 39244404827 |
+| Independent Node.js BigInt cent-based half-even comparator and 250 reproducible pairs | 100 | `js/fixed_cents.js`, `tests/test_js_fixed_cents.py` |
+| Updated reproducible release ZIP includes typed table module and archive checks | 50 | `tools/package_source.py`, `tests/test_package_source.py` |
+| Course lesson 18 and reproducible, failure-inclusive research/performance documentation | 50 | `courses/lesson18_typed_tables.md`, research and CI report |
+| **Total new, provisional self-assessed points** | **800** | [Successful GitHub CI run](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39244404827) |
 
-**Verified CI:** 348/348 tests on each Python 3.11, 3.12, 3.13 + Node.js 22, **1,044 passing unittest executions**, no failures/warnings in reviewed logs; the model CLI and source archive build succeeded.
+**Zero new points** for inherited 348 test methods, prior typed functions, original Decimal semantics, earlier source release, backend/web/ML demos and repetition of older results. First specialized workflow failure 39244247653 is documented; success was verified only after fix in commit `03a02f9ef5a3eff8bf2084a0128ecbe9382f5877`. A successful run is not a proof of general-purpose superiority. Formal grammar-level tables, secure production release, cross-language cost-equivalent benchmarks and completed thesis remain unearned.
 
-**No points** for inherited SI tests, previous API/frontend/typed functions, public deployment, standalone ML framework, general-purpose language performance wins, formal proof, global package manager, complete thesis or new system terminal. This self-assessed progress record is not a measurement of AI intelligence or altered model weights.
-
-**Negative result:** AxiomFlow's direct feature pathway was slower than direct Python Decimal in the logged microbenchmark, and the two paths are not cost-equivalent. The result is explicitly recorded rather than concealed. The synthetic OLS zero-error result is not evidence of ML generalization.
+The score is a subjective user-authorized project progress ledger, **not** evidence that underlying AI model weights or intelligence changed.
