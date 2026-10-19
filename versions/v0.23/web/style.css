@@ -1,0 +1,7 @@
+:root{color-scheme:light;font-family:system-ui,-apple-system,sans-serif;color:#172033;background:#f4f6f9}
+body{margin:0;padding:2rem}main{max-width:38rem;margin:auto;background:white;padding:2rem;border-radius:1rem;box-shadow:0 3px 16px #17203316}
+h1{margin-top:0}form{display:grid;gap:1rem}label{display:grid;gap:.4rem;font-weight:600}
+input,button{font:inherit;padding:.75rem;border:1px solid #95a1b1;border-radius:.5rem}
+button{background:#1646b5;color:white;border:0;cursor:pointer;font-weight:700}
+button:hover{background:#123582}output{display:block;min-height:2rem;margin-top:1.5rem;font-size:1.2rem;font-weight:700}
+section{margin-top:2rem;color:#42516a}code{font-family:ui-monospace,monospace}
