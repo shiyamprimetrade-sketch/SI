@@ -1,23 +1,25 @@
-# SI v0.24 — Auditable incremental engineering score
+# SI v0.25 — Nonduplicative self-assessed project score
 
-| Ledger | Points |
+| Ledger | Score |
 |---|---:|
-| Historical simulation archive (unchanged) | **996667 / 1000000** |
-| New SI project before v0.24 | **5450 / 1000000** |
-| v0.24 newly earned, nonduplicate self-assessed points | **+800** |
-| **New SI project cumulative** | **6250 / 1000000** |
-| Remaining to conditional 100000 checkpoint | **93750** |
+| Historical simulation archive — unchanged | **996667 / 1000000** |
+| New SI engineering project at v0.25 entry | **6250 / 1000000** |
+| Evidence-based provisional v0.25 award | **+850** |
+| **New SI cumulative score** | **7100 / 1000000** |
+| Remaining to conditional 100000-point milestone | **92900** |
 
-## New v0.24 evidence awarded once
-| New, distinct milestone | Points | Artifact and verification |
+## Only new auditable work credited
+| Deliverable, distinct from v0.24 | Points | Evidence |
 |---|---:|---|
-| Executable table source-level relational filtering with static typed predicates | 200 | `axiomflow/table_language.py`; real CI |
-| Schema-checked derived columns reusing existing AxiomFlow pure scalar/function grammar | 250 | `derive` and `fn` integration, typed expression inference |
-| Twelve new tests including 250 seeded Decimal cases, adversarial rejection and 200 independently authored Node BigInt table samples | 200 | `tests/test_relational_table.py`, `tests/test_table_js_reference.py` |
-| New language source example, CLI integration, deterministic release ZIP additions | 75 | `examples/filtered_table.af`, `tools/package_source.py` |
-| Lesson 20, formalized table language semantics, thesis-style research and honest comparison record | 75 | `docs/table_language_spec_v024.md`, `docs/research_v024.md`, `courses/lesson20_relational_functions.md`, `docs/ci_evidence_v024.md` |
-| **New total** | **800** | [GitHub CI run 39246868940](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39246868940) |
+| Strict unified scalar/function/table CLI and compile-time mode checks | 250 | `axiomflow/unified.py`, scalar/table CLI examples and rejection tests |
+| Independently written JavaScript source-level relational subset evaluator | 200 | `js/relational_runtime.js`, Node 22 tests |
+| Fourteen new tests including 200 deterministic seeded cross-language source-program comparisons | 200 | `tests/test_unified_runtime.py`; [CI 39248411993](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39248411993) |
+| Output-equivalent process-level benchmark: equal JSON workload, five repeats, negative qualifiers | 100 | `tools/table_batch.py`, `benchmarks/unified_relational.py` and runner logs |
+| Updated reproducible release archive with expanded runtime/adapters | 50 | `tools/package_source.py` and inherited packaging-integrity tests on new files |
+| Versioned lesson 21, source semantics, doctoral research record and failure limitations | 50 | `courses/lesson21_unified_source.md`, `docs/unified_spec.md`, `docs/research_v025.md`, CI audit |
+| **Total** | **850** | No re-crediting inherited tests or earlier grammar/features |
 
-**New score 6250/1000000** is a provisional user-authorized engineering-project progress estimate, not model retraining or independently certified intelligence. **The 100000 milestone is NOT yet achieved.** v0.24 earns **0 points** for the inherited v0.23 parser/table operations, earlier function execution engine, previous packages, old numeric semantics, prior tests, unbuilt general compiler/dependency tooling, secure public web deployment, real ML system, universal performance superiority, full terminal or completed thesis.
+## Verification
+Python 3.11/3.12/3.13 with Node.js 22 passed **402 test methods per runtime**, **1,206 successful executions**, no failed tests/warnings, real source CLI and package checks. The project score measures **self-assessed software deliverable progress**; it is not an objective intelligence metric or evidence of changes to the assistant's neural weights.
 
-The working source language now has schema-checked filters and derivations, but no claim of complete relational-algebra semantics or formally proved soundness. No results are described as faster than all existing languages.
+Zero points are awarded for the unimplemented unified type system, full JS runtime, production terminal, full ML framework, security proof, benchmark supremacy, peer-reviewed thesis or 100k target completion. Historical archive remains completely separate.
