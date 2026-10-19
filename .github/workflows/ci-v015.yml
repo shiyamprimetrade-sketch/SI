@@ -1,0 +1,39 @@
+name: SI v0.15 exact rational nearest-even obligations
+on:
+  push:
+    paths:
+      - 'versions/v0.15/**'
+      - '.github/workflows/ci-v015.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.15/**'
+      - '.github/workflows/ci-v015.yml'
+permissions:
+  contents: read
+jobs:
+  numeric-invariants:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Check syntax and runtime versions
+        working-directory: versions/v0.15
+        run: python --version && node --version && python -m compileall -q si tests && node --check js/portable.js && node --check js/vm.js && node --check js/numeric_probe.js
+      - name: Full regression and invariant checks
+        working-directory: versions/v0.15
+        run: python -W error -m unittest discover -s tests -v
+      - name: Bounded lexical obligations
+        working-directory: versions/v0.15
+        run: python -W error -m si.obligations
+      - name: SI CLI smoke
+        working-directory: versions/v0.15
+        run: python -m si examples.si
