@@ -1,0 +1,45 @@
+name: SI v0.26 bounded mixed scalar-table scopes
+on:
+  push:
+    paths:
+      - 'versions/v0.26/**'
+      - '.github/workflows/ci-v026.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.26/**'
+      - '.github/workflows/ci-v026.yml'
+permissions:
+  contents: read
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Syntax and runtime checks
+        working-directory: versions/v0.26
+        run: python --version && node --version && python -m compileall -q si tests axiomflow tools benchmarks && node --check js/relational_runtime.js && node --check js/fixed_cents.js && node --check js/table_reference.js
+      - name: Full SI and AxiomFlow tests
+        working-directory: versions/v0.26
+        run: python -W error -m unittest discover -s tests -v
+      - name: Mixed and legacy source CLI examples
+        working-directory: versions/v0.26
+        run: python -m axiomflow.unified examples/mixed_table.af --csv data/landed_cost.csv && python -m axiomflow.unified examples/filtered_table.af --csv data/landed_cost.csv && python -m axiomflow.unified example.af
+      - name: Reproducible source package
+        working-directory: versions/v0.26
+        run: python -m tools.package_source --output /tmp/axiomflow-v026.zip
+      - name: Legacy obligations and pinned project
+        working-directory: versions/v0.26
+        run: python -m axiomflow --project project/axiomflow.json && python -m si examples.si && python -W error -m si.obligations
+      - name: Bounded output-equivalent Python Node mixed benchmark
+        working-directory: versions/v0.26
+        run: python benchmarks/unified_relational.py

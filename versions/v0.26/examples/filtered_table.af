@@ -1,0 +1,9 @@
+# Statically typed scalar function reused inside a relational AxiomFlow table program
+fn uplift(x: USD) -> USD = x * 1.10
+table t = input
+filter t where price_usd >= 120.00 USD
+derive t adjusted_usd = uplift(price_usd)
+sort t by adjusted_usd
+sum t.adjusted_usd
+select t (price_usd,adjusted_usd)
+emit t

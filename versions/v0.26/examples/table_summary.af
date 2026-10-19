@@ -1,0 +1,8 @@
+# AxiomFlow v0.23 table sublanguage
+# The input table is provided with --csv, never read by the language program.
+table costs = input
+augment costs landed_cost_usd
+sum costs.landed_cost_usd
+select costs (price_usd, landed_cost_usd)
+sort costs by price_usd
+emit costs
