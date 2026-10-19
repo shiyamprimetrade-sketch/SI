@@ -52,8 +52,10 @@ def compile_program(source):
             if line.startswith("use "):
                 raise AxiomError("module loading requires pinned project runner")
             if line.startswith("let "):
-                if table_seen or len(bound)>=8:
-                    raise AxiomError("mixed bindings must precede table input and be bounded")
+                if table_seen:
+                    raise AxiomError("mixed bindings must precede table input")
+                if len(bound)>=8:
+                    raise AxiomError("mixed constant budget exceeded")
                 match=re.fullmatch(r"let\s+([a-z_][a-z_0-9]*)\s*=\s*(.+)",line)
                 if match is None or match[1] in bound:
                     raise AxiomError("invalid or duplicate mixed binding")
