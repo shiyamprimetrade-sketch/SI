@@ -1,0 +1,45 @@
+name: SI v0.24 relational schema and functions
+on:
+  push:
+    paths:
+      - 'versions/v0.24/**'
+      - '.github/workflows/ci-v024.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.24/**'
+      - '.github/workflows/ci-v024.yml'
+permissions:
+  contents: read
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Source and JS checks
+        working-directory: versions/v0.24
+        run: python --version && node --version && python -m compileall -q si tests axiomflow tools benchmarks && node --check js/table_reference.js && node --check js/fixed_cents.js && node --check js/portable.js && node --check js/vm.js && node --check web/app.js
+      - name: Full regression and new relational adversarial tests
+        working-directory: versions/v0.24
+        run: python -W error -m unittest discover -s tests -v
+      - name: Relational source program CLI
+        working-directory: versions/v0.24
+        run: python -m axiomflow.table_language examples/filtered_table.af --csv data/landed_cost.csv
+      - name: Deterministic source packaging
+        working-directory: versions/v0.24
+        run: python -m tools.package_source --output /tmp/axiomflow-v024.zip
+      - name: Legacy and typed CLI + bounded obligations
+        working-directory: versions/v0.24
+        run: python -m axiomflow --project project/axiomflow.json && python -m si examples.si && python -W error -m si.obligations
+      - name: Output-equivalent but NOT cost-equivalent Python/Node comparison
+        working-directory: versions/v0.24
+        run: python benchmarks/table_workload.py
