@@ -1,0 +1,26 @@
+SI v0.10 LOCAL TEST EVIDENCE (before GitHub CI)
+Standalone lexer: 10/10 PASSED (Python local runtime)
+Bounded obligation suite: 7/7 PASSED
+Syntax check: Python compileall -q si tests returned 0
+Full inherited and cross-engine suite: NOT RUN LOCALLY; requires full GitHub checkout/CI
+Bounded obligation data:
+{
+  "accepted": 945,
+  "alphabet": [
+    "P",
+    "U",
+    "0",
+    "+",
+    "#",
+    " ",
+    "\t",
+    "\n"
+  ],
+  "language_profile": "SI-Portable-1",
+  "max_length": 4,
+  "obligation": "bounded-lexer-roundtrip-and-idempotence",
+  "rejected": 3736,
+  "sha256_corpus_results": "9997585eb832c9a59660a7ff3873c1e53a087a975b17a79198512aa36a30bd4d",
+  "total_cases": 4681,
+  "universal_proof": false
+}
