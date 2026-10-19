@@ -1,0 +1,12 @@
+test_bounded_not_unbounded (test_portable_obligations.PortableObligationTests.test_bounded_not_unbounded) ... ok
+test_canonical_rejection_of_invalid_object (test_portable_obligations.PortableObligationTests.test_canonical_rejection_of_invalid_object) ... ok
+test_comment_insertion_preserves_program_shape (test_portable_obligations.PortableObligationTests.test_comment_insertion_preserves_program_shape) ... ok
+test_complete_small_corpus_four_chars (test_portable_obligations.PortableObligationTests.test_complete_small_corpus_four_chars) ... ok
+test_deterministic_digest (test_portable_obligations.PortableObligationTests.test_deterministic_digest) ... ok
+test_literal_alphabet_strict_not_unicode (test_portable_obligations.PortableObligationTests.test_literal_alphabet_strict_not_unicode) ... ok
+test_nontrivial_program_structural_invariance (test_portable_obligations.PortableObligationTests.test_nontrivial_program_structural_invariance) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+OK
