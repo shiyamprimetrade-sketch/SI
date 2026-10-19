@@ -1,24 +1,27 @@
-# SI v0.22 — Audited self-assessed engineering points
+# SI v0.23 — Provisional evidence-based project score
 
 | Ledger | Points |
 |---|---:|
-| Historical simulation archive, unchanged | **996667/1000000** |
-| New SI project before v0.22 | **3950/1000000** |
-| **Incremental v0.22 award** | **+800** |
-| **New SI project cumulative** | **4750/1000000** |
-| Remaining to evidence-gated 100000 project milestone | **95250** |
+| Historical simulation archival score (unchanged) | **996667/1000000** |
+| New SI engineering project entering v0.23 | **4750/1000000** |
+| New, nonduplicated v0.23 self-assessment | **+700** |
+| **New SI engineering project cumulative** | **5450/1000000** |
+| Remaining to 100000 conditional milestone | **94550** |
 
-## New v0.22 work awarded once
-| Distinct evidence | New points | Verification |
+## v0.23 incremental award
+
+| Actually new evidence | Points | Auditable source |
 |---|---:|---|
-| Bounded immutable typed tables/records host operations, validated schemas and deterministic transforms | 250 | `axiomflow/table.py`, passing table tests |
-| Cached parsed and statically checked typed AxiomFlow money feature, parity against v0.21 | 200 | `axiomflow/data.py`, no-reparse test and measured medians |
-| New adversarial and seeded tests (17 new unittest methods/version; 400 triple-path cases) | 150 | `tests/test_typed_tables.py`, CI 39244404827 |
-| Independent Node.js BigInt cent-based half-even comparator and 250 reproducible pairs | 100 | `js/fixed_cents.js`, `tests/test_js_fixed_cents.py` |
-| Updated reproducible release ZIP includes typed table module and archive checks | 50 | `tools/package_source.py`, `tests/test_package_source.py` |
-| Course lesson 18 and reproducible, failure-inclusive research/performance documentation | 50 | `courses/lesson18_typed_tables.md`, research and CI report |
-| **Total new, provisional self-assessed points** | **800** | [Successful GitHub CI run](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39244404827) |
+| New parsed, executable AxiomFlow table sublanguage with static schema validation and bounded deterministic semantics | 300 | `axiomflow/table_language.py`, `docs/table_language_spec.md` |
+| Eleven new unit methods including CLI, compile-time rejection, 250 seeded independent Decimal table examples | 175 | `tests/test_table_language.py`, CI run |
+| User-facing `.af` table source example and terminal command | 75 | `examples/table_summary.af`, `python -m axiomflow.table_language ... --csv ...` |
+| Updated deterministic ZIP and release integrity paths | 50 | `tools/package_source.py`, package integrity tests |
+| New lesson 19, research notebook and versioned acceptance-gate status | 100 | `courses/lesson19_table_grammar.md`, `docs/research_v023.md`, CI report |
+| **New total** | **700** | [Actual completed CI](https://github.com/shiyamprimetrade-sketch/SI/actions/runs/39245695068) |
 
-**Zero new points** for inherited 348 test methods, prior typed functions, original Decimal semantics, earlier source release, backend/web/ML demos and repetition of older results. First specialized workflow failure 39244247653 is documented; success was verified only after fix in commit `03a02f9ef5a3eff8bf2084a0128ecbe9382f5877`. A successful run is not a proof of general-purpose superiority. Formal grammar-level tables, secure production release, cross-language cost-equivalent benchmarks and completed thesis remain unearned.
+## Verified evidence
+**376/376 passed** on Python 3.11, 3.12 and 3.13 with Node.js 22; **1,128 test executions**, no errors or warnings in inspected job logs. The new table CLI, inherited source packaging, SI bytecode/lexical obligations and original interpreter compatibility also passed.
 
-The score is a subjective user-authorized project progress ledger, **not** evidence that underlying AI model weights or intelligence changed.
+**No re-credit** for the host typed table API (v0.22), earlier cached money function (v0.22), independent Node cents oracle (v0.22), prior numerical semantics, previous 365 unittest methods, or existing HTTP/ML examples. No point award for a fully integrated language parser, fair table performance superiority, secure full terminal or completed doctoral dissertation; these achievements remain incomplete.
+
+Scores are provisional, subjective, user-authorized **project progress**, not a measure of AI weights, retraining, superiority over all programming languages or superintelligence.
