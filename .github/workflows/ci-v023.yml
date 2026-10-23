@@ -1,0 +1,39 @@
+name: SI v0.23 executable typed table sublanguage
+on:
+  push:
+    paths:
+      - 'versions/v0.23/**'
+      - '.github/workflows/ci-v023.yml'
+  pull_request:
+    paths:
+      - 'versions/v0.23/**'
+      - '.github/workflows/ci-v023.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Syntax
+        working-directory: versions/v0.23
+        run: python --version && node --version && python -m compileall -q si axiomflow tests tools benchmarks && node --check js/fixed_cents.js && node --check js/vm.js && node --check web/app.js
+      - name: Full SI and AxiomFlow unit regression
+        working-directory: versions/v0.23
+        run: python -W error -m unittest discover -s tests -v
+      - name: Execute table source and package
+        working-directory: versions/v0.23
+        run: python -m axiomflow.tablelang examples/table.af && python -m tools.package_source --output /tmp/axiomflow-v023.zip
+      - name: Prior language obligations and benchmark telemetry
+        working-directory: versions/v0.23
+        run: python -W error -m si.obligations && python benchmarks/compare_precompiled.py --iterations 100 --repeats 3
