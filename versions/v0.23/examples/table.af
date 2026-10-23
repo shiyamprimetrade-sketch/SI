@@ -1,0 +1,8 @@
+# AxiomFlow typed table source v0.23
+table costs(price_usd: USD, rate: scalar, observed_cost_usd: USD)
+row costs(125.50 USD, 0.0750, 134.91 USD)
+row costs(1.00 USD, 0.1250, 1.12 USD)
+derive costs landed_cost_usd: USD = landed(price_usd, rate)
+sort costs by price_usd
+select costs price_usd,landed_cost_usd
+sum costs landed_cost_usd
